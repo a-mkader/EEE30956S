@@ -135,19 +135,19 @@ int main(void)
     {
       tdelay = 500; // 0.5 seconds
       lcd_command(CLEAR);
-      lcd_putstring("Delay is 0.5s");
+      lcd_putstring("Delay: 0.5s");
     }
     else if (HAL_GPIO_ReadPin(GPIOA, SW1) == GPIO_PIN_RESET)
     {
       tdelay = 2000; // 2 seconds
       lcd_command(CLEAR);
-      lcd_putstring("Delay is 2s");
+      lcd_putstring("Delay: 2s");
     }
     else if (HAL_GPIO_ReadPin(GPIOA, SW2) == GPIO_PIN_RESET)
     {
       tdelay = 1000; // 1 second
       lcd_command(CLEAR);
-      lcd_putstring("Delay is 1s");
+      lcd_putstring("Delay: 1s");
     }
     else if (HAL_GPIO_ReadPin(GPIOA, SW3) == GPIO_PIN_RESET)
     {
