@@ -23,6 +23,7 @@
 /* USER CODE BEGIN Includes */
 #include <stdint.h>
 #include "stm32f0xx.h"
+#include <stm32f051x8.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,10 +45,19 @@ TIM_HandleTypeDef htim16;
 
 /* USER CODE BEGIN PV */
 // TODO: Define input variables
-#define SW0 GPIO_IDR_0
-#define SW1 GPIO_IDR_1
-#define SW2 GPIO_IDR_2
-#define SW3 GPIO_IDR_3
+#define SW0 GPIO_PIN_0
+#define SW1 GPIO_PIN_1
+#define SW2 GPIO_PIN_2
+#define SW3 GPIO_PIN_3
+
+// Define the LED patterns
+uint8_t patterns[9] = {
+    0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0xFF
+};
+
+// Global variables to keep track of the current pattern and delay
+uint8_t currentPattern = 0;
+uint32_t delay = 1000; // Default delay is 1 second
 
 /* USER CODE END PV */
 
@@ -70,7 +80,7 @@ void TIM16_IRQHandler(void);
   */
 int main(void)
 {
-
+ 
   /* USER CODE BEGIN 1 */
   /* USER CODE END 1 */
 
@@ -94,7 +104,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   // TODO: Start timer TIM16
-
+   HAL_TIM_Base_Start_IT(&htim16);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -102,16 +112,37 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
-
-    // TODO: Check pushbuttons to change timer delay
     
+    /* USER CODE BEGIN 3 */
+    
+    // TODO: Check pushbuttons to change timer delay
+    // Check push button states
+        if (HAL_GPIO_ReadPin(GPIOA, SW0) == GPIO_PIN_RESET)
+        {
+            delay = 500; // 0.5 seconds
+            
+        }
+        else if (HAL_GPIO_ReadPin(GPIOA, SW1) == GPIO_PIN_RESET)
+        {
+            delay = 2000; // 2 seconds
+            
+        }
+        else if (HAL_GPIO_ReadPin(GPIOA, SW2) == GPIO_PIN_RESET)
+        {
+            delay = 1000; // 1 second
+          
+        }
+        else if (HAL_GPIO_ReadPin(GPIOA, SW3) == GPIO_PIN_RESET)
+        {
+            currentPattern = 0; // Reset to pattern 1
+            
+        }
+    }
     
 
   }
   /* USER CODE END 3 */
-}
+
 
 /**
   * @brief System Clock Configuration
@@ -324,13 +355,39 @@ static void MX_GPIO_Init(void)
 // Timer rolled over
 void TIM16_IRQHandler(void)
 {
-	// Acknowledge interrupt
-	HAL_TIM_IRQHandler(&htim16);
-
-	// TODO: Change LED pattern
-	// print something
-
+  // Acknowledge interrupt
+  HAL_TIM_IRQHandler(&htim16);
   
+  //TODO Change LED Pattern
+  //Print Something
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_All, GPIO_PIN_RESET);  // Reset all LEDs
+  HAL_GPIO_WritePin(GPIOB, patterns[currentPattern], GPIO_PIN_SET);  // Set the current pattern
+
+  // Move to the next pattern
+  currentPattern = (currentPattern + 1) % 9;
+
+  // Adjust the timer period
+  __HAL_TIM_SET_AUTORELOAD(&htim16, delay);
+
+
+  // TODO: Change LED pattern
+	// print something
+  /*if (__HAL_TIM_GET_FLAG(&htim16, TIM_FLAG_UPDATE) != RESET)
+  {
+    if (__HAL_TIM_GET_IT_SOURCE(&htim16, TIM_IT_UPDATE) != RESET)
+    {
+      __HAL_TIM_CLEAR_IT(&htim16, TIM_IT_UPDATE);
+
+      // Display the current pattern
+      LL_GPIO_WriteOutputPort(GPIOB, patterns[currentPattern]);
+
+      // Move to the next pattern
+      currentPattern = (currentPattern + 1) % 9;
+
+      // Adjust the timer period
+      __HAL_TIM_SET_AUTORELOAD(&htim16, delay);
+    }
+  }*/
 }
 
 /* USER CODE END 4 */
