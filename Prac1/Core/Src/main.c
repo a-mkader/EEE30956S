@@ -24,6 +24,7 @@
 #include <stdint.h>
 #include "stm32f0xx.h"
 #include <stm32f051x8.h>
+#include <lcd_stm32f0.c>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,6 +102,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM16_Init();
+  
   /* USER CODE BEGIN 2 */
 
   // TODO: Start timer TIM16
