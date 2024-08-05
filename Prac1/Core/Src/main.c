@@ -58,6 +58,7 @@ uint8_t patterns[9] = {
 
 // Global variables to keep track of the current pattern and delay
 uint8_t currentPattern = 0;
+char currentPatternChar[11] = "123456789";
 uint32_t tdelay = 1000; // Default delay is 1 second
 
 /* USER CODE END PV */
@@ -369,33 +370,23 @@ void TIM16_IRQHandler(void)
   //Print Something
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_All, GPIO_PIN_RESET);  // Reset all LEDs
   HAL_GPIO_WritePin(GPIOB, patterns[currentPattern], GPIO_PIN_SET);  // Set the current pattern
+  
+  // Create a buffer to hold the single character string
+  char singleChar[2]; // Buffer for one character + null terminator
+  singleChar[0] = currentPatternChar[currentPattern]; // Copy the character
+  singleChar[1] = '\0'; // Null terminator
+
+  // Print on LCD screen
   lcd_command(LINE_TWO);
-  lcd_putstring("Pattern: " + currentPattern);
+  lcd_putstring(singleChar);
+
   // Move to the next pattern
   currentPattern = (currentPattern + 1) % 9;
+
 
   // Adjust the timer period
   __HAL_TIM_SET_AUTORELOAD(&htim16, tdelay);
 
-
-  // TODO: Change LED pattern
-	// print something
-  /*if (__HAL_TIM_GET_FLAG(&htim16, TIM_FLAG_UPDATE) != RESET)
-  {
-    if (__HAL_TIM_GET_IT_SOURCE(&htim16, TIM_IT_UPDATE) != RESET)
-    {
-      __HAL_TIM_CLEAR_IT(&htim16, TIM_IT_UPDATE);
-
-      // Display the current pattern
-      LL_GPIO_WriteOutputPort(GPIOB, patterns[currentPattern]);
-
-      // Move to the next pattern
-      currentPattern = (currentPattern + 1) % 9;
-
-      // Adjust the timer period
-      __HAL_TIM_SET_AUTORELOAD(&htim16, delay);
-    }
-  }*/
 }
 
 /* USER CODE END 4 */
