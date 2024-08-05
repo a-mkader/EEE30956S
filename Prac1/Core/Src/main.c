@@ -374,13 +374,15 @@ void TIM16_IRQHandler(void)
   HAL_GPIO_WritePin(GPIOB, patterns[currentPattern], GPIO_PIN_SET); // Set the current pattern
 
   // Create a buffer to hold the single character string
-  char singleChar[2];                                 // Buffer for one character + null terminator
-  singleChar[0] = currentPatternChar[currentPattern]; // Copy the character
-  singleChar[1] = '\0';                               // Null terminator
+  // Create a buffer to hold the complete string
+  char displayString[20]; // Adjust size as needed to hold the full string
+
+  // Format the string with the current pattern number
+  sprintf(displayString, "Pattern: %d", currentPattern + 1); // currentPattern is zero-based
 
   // Print on LCD screen
   lcd_command(LINE_TWO);
-  lcd_putstring(singleChar);
+  lcd_putstring(displayString);
 
   // Move to the next pattern
   currentPattern = (currentPattern + 1) % 9;
