@@ -1,20 +1,22 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2023 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file            : main.c
+ * @brief           :Main program body
+ * @authors         :Chris Scheepers
+ *                  :Abdul-Mateen Kader
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2023 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -85,12 +87,12 @@ void TIM16_IRQHandler(void);
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
- 
+
   /* USER CODE BEGIN 1 */
   /* USER CODE END 1 */
 
@@ -117,7 +119,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   // TODO: Start timer TIM16
-   HAL_TIM_Base_Start_IT(&htim16);
+  HAL_TIM_Base_Start_IT(&htim16);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -125,82 +127,76 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    
+
     /* USER CODE BEGIN 3 */
-    
+
     // TODO: Check pushbuttons to change timer delay
     // Check push button states
-        if (HAL_GPIO_ReadPin(GPIOA, SW0) == GPIO_PIN_RESET)
-        {
-            tdelay = 500; // 0.5 seconds
-            lcd_command(CLEAR);
-            lcd_putstring("Delay is 0.5s");
-        }
-        else if (HAL_GPIO_ReadPin(GPIOA, SW1) == GPIO_PIN_RESET)
-        {
-            tdelay = 2000; // 2 seconds
-            lcd_command(CLEAR);
-            lcd_putstring("Delay is 2s");
-        }
-        else if (HAL_GPIO_ReadPin(GPIOA, SW2) == GPIO_PIN_RESET)
-        {
-            tdelay = 1000; // 1 second
-            lcd_command(CLEAR);
-            lcd_putstring("Delay is 1s");
-        }
-        else if (HAL_GPIO_ReadPin(GPIOA, SW3) == GPIO_PIN_RESET)
-        {
-            currentPattern = 0; // Reset to pattern 1
-            
-        }
+    if (HAL_GPIO_ReadPin(GPIOA, SW0) == GPIO_PIN_RESET)
+    {
+      tdelay = 500; // 0.5 seconds
+      lcd_command(CLEAR);
+      lcd_putstring("Delay is 0.5s");
     }
-    
-
+    else if (HAL_GPIO_ReadPin(GPIOA, SW1) == GPIO_PIN_RESET)
+    {
+      tdelay = 2000; // 2 seconds
+      lcd_command(CLEAR);
+      lcd_putstring("Delay is 2s");
+    }
+    else if (HAL_GPIO_ReadPin(GPIOA, SW2) == GPIO_PIN_RESET)
+    {
+      tdelay = 1000; // 1 second
+      lcd_command(CLEAR);
+      lcd_putstring("Delay is 1s");
+    }
+    else if (HAL_GPIO_ReadPin(GPIOA, SW3) == GPIO_PIN_RESET)
+    {
+      currentPattern = 0; // Reset to pattern 1
+    }
   }
-  /* USER CODE END 3 */
-
+}
+/* USER CODE END 3 */
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+ * @brief System Clock Configuration
+ * @retval None
+ */
 void SystemClock_Config(void)
 {
   LL_FLASH_SetLatency(LL_FLASH_LATENCY_0);
-  while(LL_FLASH_GetLatency() != LL_FLASH_LATENCY_0)
+  while (LL_FLASH_GetLatency() != LL_FLASH_LATENCY_0)
   {
   }
   LL_RCC_HSI_Enable();
 
-   /* Wait till HSI is ready */
-  while(LL_RCC_HSI_IsReady() != 1)
+  /* Wait till HSI is ready */
+  while (LL_RCC_HSI_IsReady() != 1)
   {
-
   }
   LL_RCC_HSI_SetCalibTrimming(16);
   LL_RCC_SetAHBPrescaler(LL_RCC_SYSCLK_DIV_1);
   LL_RCC_SetAPB1Prescaler(LL_RCC_APB1_DIV_1);
   LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_HSI);
 
-   /* Wait till System clock is ready */
-  while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_HSI)
+  /* Wait till System clock is ready */
+  while (LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_HSI)
   {
-
   }
   LL_SetSystemCoreClock(8000000);
 
-   /* Update the time base */
-  if (HAL_InitTick (TICK_INT_PRIORITY) != HAL_OK)
+  /* Update the time base */
+  if (HAL_InitTick(TICK_INT_PRIORITY) != HAL_OK)
   {
     Error_Handler();
   }
 }
 
 /**
-  * @brief TIM16 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief TIM16 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_TIM16_Init(void)
 {
 
@@ -212,9 +208,9 @@ static void MX_TIM16_Init(void)
 
   /* USER CODE END TIM16_Init 1 */
   htim16.Instance = TIM16;
-  htim16.Init.Prescaler = 8000-1;
+  htim16.Init.Prescaler = 8000 - 1;
   htim16.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim16.Init.Period = 1000-1;
+  htim16.Init.Period = 1000 - 1;
   htim16.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim16.Init.RepetitionCounter = 0;
   htim16.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
@@ -225,19 +221,18 @@ static void MX_TIM16_Init(void)
   /* USER CODE BEGIN TIM16_Init 2 */
   NVIC_EnableIRQ(TIM16_IRQn);
   /* USER CODE END TIM16_Init 2 */
-
 }
 
 /**
-  * @brief GPIO Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief GPIO Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_GPIO_Init(void)
 {
   LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
-/* USER CODE BEGIN MX_GPIO_Init_1 */
-/* USER CODE END MX_GPIO_Init_1 */
+  /* USER CODE BEGIN MX_GPIO_Init_1 */
+  /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOF);
@@ -362,8 +357,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
   LL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
+  /* USER CODE BEGIN MX_GPIO_Init_2 */
+  /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
@@ -373,16 +368,16 @@ void TIM16_IRQHandler(void)
 {
   // Acknowledge interrupt
   HAL_TIM_IRQHandler(&htim16);
-  
-  //TODO Change LED Pattern
-  //Print Something
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_All, GPIO_PIN_RESET);  // Reset all LEDs
-  HAL_GPIO_WritePin(GPIOB, patterns[currentPattern], GPIO_PIN_SET);  // Set the current pattern
-  
+
+  // TODO Change LED Pattern
+  // Print Something
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_All, GPIO_PIN_RESET);           // Reset all LEDs
+  HAL_GPIO_WritePin(GPIOB, patterns[currentPattern], GPIO_PIN_SET); // Set the current pattern
+
   // Create a buffer to hold the single character string
-  char singleChar[2]; // Buffer for one character + null terminator
+  char singleChar[2];                                 // Buffer for one character + null terminator
   singleChar[0] = currentPatternChar[currentPattern]; // Copy the character
-  singleChar[1] = '\0'; // Null terminator
+  singleChar[1] = '\0';                               // Null terminator
 
   // Print on LCD screen
   lcd_command(LINE_TWO);
@@ -391,18 +386,16 @@ void TIM16_IRQHandler(void)
   // Move to the next pattern
   currentPattern = (currentPattern + 1) % 9;
 
-
   // Adjust the timer period
   __HAL_TIM_SET_AUTORELOAD(&htim16, tdelay);
-
 }
 
 /* USER CODE END 4 */
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -414,14 +407,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
+ * @brief  Reports the name of the source file and the source line number
+ *         where the assert_param error has occurred.
+ * @param  file: pointer to the source file name
+ * @param  line: assert_param error line source number
+ * @retval None
+ */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
