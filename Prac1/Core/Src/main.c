@@ -58,7 +58,7 @@ uint8_t patterns[9] = {
 
 // Global variables to keep track of the current pattern and delay
 uint8_t currentPattern = 0;
-uint32_t delay = 1000; // Default delay is 1 second
+uint32_t tdelay = 1000; // Default delay is 1 second
 
 /* USER CODE END PV */
 
@@ -102,7 +102,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM16_Init();
-  
+  init_LCD();
+  lcd_command(CLEAR);
+  lcd_putstring("Delay is 1s");
   /* USER CODE BEGIN 2 */
 
   // TODO: Start timer TIM16
@@ -121,18 +123,21 @@ int main(void)
     // Check push button states
         if (HAL_GPIO_ReadPin(GPIOA, SW0) == GPIO_PIN_RESET)
         {
-            delay = 500; // 0.5 seconds
-            
+            tdelay = 500; // 0.5 seconds
+            lcd_command(CLEAR);
+            lcd_putstring("Delay is 0.5s");
         }
         else if (HAL_GPIO_ReadPin(GPIOA, SW1) == GPIO_PIN_RESET)
         {
-            delay = 2000; // 2 seconds
-            
+            tdelay = 2000; // 2 seconds
+            lcd_command(CLEAR);
+            lcd_putstring("Delay is 2s");
         }
         else if (HAL_GPIO_ReadPin(GPIOA, SW2) == GPIO_PIN_RESET)
         {
-            delay = 1000; // 1 second
-          
+            tdelay = 1000; // 1 second
+            lcd_command(CLEAR);
+            lcd_putstring("Delay is 1s");
         }
         else if (HAL_GPIO_ReadPin(GPIOA, SW3) == GPIO_PIN_RESET)
         {
@@ -364,12 +369,13 @@ void TIM16_IRQHandler(void)
   //Print Something
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_All, GPIO_PIN_RESET);  // Reset all LEDs
   HAL_GPIO_WritePin(GPIOB, patterns[currentPattern], GPIO_PIN_SET);  // Set the current pattern
-
+  lcd_command(LINE_TWO);
+  lcd_putstring("Pattern: " + currentPattern);
   // Move to the next pattern
   currentPattern = (currentPattern + 1) % 9;
 
   // Adjust the timer period
-  __HAL_TIM_SET_AUTORELOAD(&htim16, delay);
+  __HAL_TIM_SET_AUTORELOAD(&htim16, tdelay);
 
 
   // TODO: Change LED pattern
