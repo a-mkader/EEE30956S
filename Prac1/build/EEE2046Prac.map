@@ -1838,22 +1838,22 @@ LOAD c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode
  .comment       0x0000000000000039       0x3a c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-memset.o)
  .comment       0x0000000000000039       0x3a c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-init.o)
 
-.debug_info     0x0000000000000000     0x9e80
- .debug_info    0x0000000000000000     0x16f3 build/main.o
- .debug_info    0x00000000000016f3      0x77b build/stm32f0xx_hal_msp.o
- .debug_info    0x0000000000001e6e      0x121 build/stm32f0xx_it.o
- .debug_info    0x0000000000001f8f      0x25d build/system_stm32f0xx.o
- .debug_info    0x00000000000021ec      0x74c build/stm32f0xx_hal.o
- .debug_info    0x0000000000002938      0x7cc build/stm32f0xx_hal_cortex.o
- .debug_info    0x0000000000003104      0x5ec build/stm32f0xx_hal_gpio.o
- .debug_info    0x00000000000036f0     0x3b27 build/stm32f0xx_hal_tim.o
- .debug_info    0x0000000000007217     0x1a01 build/stm32f0xx_hal_tim_ex.o
- .debug_info    0x0000000000008c18      0x76f build/stm32f0xx_ll_gpio.o
- .debug_info    0x0000000000009387      0xa1c build/stm32f0xx_ll_utils.o
- .debug_info    0x0000000000009da3       0x2e build/startup_stm32f051x8.o
- .debug_info    0x0000000000009dd1       0x3b c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
- .debug_info    0x0000000000009e0c       0x3b c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_divsi3.o)
- .debug_info    0x0000000000009e47       0x39 c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
+.debug_info     0x0000000000000000     0x9e83
+ .debug_info    0x0000000000000000     0x16f6 build/main.o
+ .debug_info    0x00000000000016f6      0x77b build/stm32f0xx_hal_msp.o
+ .debug_info    0x0000000000001e71      0x121 build/stm32f0xx_it.o
+ .debug_info    0x0000000000001f92      0x25d build/system_stm32f0xx.o
+ .debug_info    0x00000000000021ef      0x74c build/stm32f0xx_hal.o
+ .debug_info    0x000000000000293b      0x7cc build/stm32f0xx_hal_cortex.o
+ .debug_info    0x0000000000003107      0x5ec build/stm32f0xx_hal_gpio.o
+ .debug_info    0x00000000000036f3     0x3b27 build/stm32f0xx_hal_tim.o
+ .debug_info    0x000000000000721a     0x1a01 build/stm32f0xx_hal_tim_ex.o
+ .debug_info    0x0000000000008c1b      0x76f build/stm32f0xx_ll_gpio.o
+ .debug_info    0x000000000000938a      0xa1c build/stm32f0xx_ll_utils.o
+ .debug_info    0x0000000000009da6       0x2e build/startup_stm32f051x8.o
+ .debug_info    0x0000000000009dd4       0x3b c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
+ .debug_info    0x0000000000009e0f       0x3b c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_divsi3.o)
+ .debug_info    0x0000000000009e4a       0x39 c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
 
 .debug_abbrev   0x0000000000000000     0x19a7
  .debug_abbrev  0x0000000000000000      0x402 build/main.o
@@ -1952,22 +1952,22 @@ LOAD c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode
  .debug_rnglists
                 0x00000000000006c8       0x19 build/startup_stm32f051x8.o
 
-.debug_line     0x0000000000000000     0x9f1f
- .debug_line    0x0000000000000000      0xc60 build/main.o
- .debug_line    0x0000000000000c60      0x2d8 build/stm32f0xx_hal_msp.o
- .debug_line    0x0000000000000f38      0x26e build/stm32f0xx_it.o
- .debug_line    0x00000000000011a6      0x2b5 build/system_stm32f0xx.o
- .debug_line    0x000000000000145b      0x598 build/stm32f0xx_hal.o
- .debug_line    0x00000000000019f3      0x5c9 build/stm32f0xx_hal_cortex.o
- .debug_line    0x0000000000001fbc      0x732 build/stm32f0xx_hal_gpio.o
- .debug_line    0x00000000000026ee     0x4cd4 build/stm32f0xx_hal_tim.o
- .debug_line    0x00000000000073c2     0x1d2f build/stm32f0xx_hal_tim_ex.o
- .debug_line    0x00000000000090f1      0x50e build/stm32f0xx_ll_gpio.o
- .debug_line    0x00000000000095ff      0x7ac build/stm32f0xx_ll_utils.o
- .debug_line    0x0000000000009dab       0x77 build/startup_stm32f051x8.o
- .debug_line    0x0000000000009e22       0x56 c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
- .debug_line    0x0000000000009e78       0x5d c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_divsi3.o)
- .debug_line    0x0000000000009ed5       0x4a c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
+.debug_line     0x0000000000000000     0x9f23
+ .debug_line    0x0000000000000000      0xc64 build/main.o
+ .debug_line    0x0000000000000c64      0x2d8 build/stm32f0xx_hal_msp.o
+ .debug_line    0x0000000000000f3c      0x26e build/stm32f0xx_it.o
+ .debug_line    0x00000000000011aa      0x2b5 build/system_stm32f0xx.o
+ .debug_line    0x000000000000145f      0x598 build/stm32f0xx_hal.o
+ .debug_line    0x00000000000019f7      0x5c9 build/stm32f0xx_hal_cortex.o
+ .debug_line    0x0000000000001fc0      0x732 build/stm32f0xx_hal_gpio.o
+ .debug_line    0x00000000000026f2     0x4cd4 build/stm32f0xx_hal_tim.o
+ .debug_line    0x00000000000073c6     0x1d2f build/stm32f0xx_hal_tim_ex.o
+ .debug_line    0x00000000000090f5      0x50e build/stm32f0xx_ll_gpio.o
+ .debug_line    0x0000000000009603      0x7ac build/stm32f0xx_ll_utils.o
+ .debug_line    0x0000000000009daf       0x77 build/startup_stm32f051x8.o
+ .debug_line    0x0000000000009e26       0x56 c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
+ .debug_line    0x0000000000009e7c       0x5d c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_divsi3.o)
+ .debug_line    0x0000000000009ed9       0x4a c:/users/demxc/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
 
 .debug_str      0x0000000000000000     0x2cdb
  .debug_str     0x0000000000000000      0xc17 build/main.o

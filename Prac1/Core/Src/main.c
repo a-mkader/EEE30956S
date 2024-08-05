@@ -53,7 +53,15 @@ TIM_HandleTypeDef htim16;
 
 // Define the LED patterns
 uint8_t patterns[9] = {
-    0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0xFF
+    0xE9, // 11101001
+    0xD2, // 11010010
+    0xA4, // 10100100
+    0x48, // 01001000
+    0x90, // 10010000
+    0x20, // 00100000
+    0x40, // 01000000
+    0x80, // 10000000
+    0x00  // 00000000 (blank row)
 };
 
 // Global variables to keep track of the current pattern and delay
