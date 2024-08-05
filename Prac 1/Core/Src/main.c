@@ -44,7 +44,10 @@ TIM_HandleTypeDef htim16;
 
 /* USER CODE BEGIN PV */
 // TODO: Define input variables
-
+#define SW0 GPIO_IDR_0
+#define SW1 GPIO_IDR_1
+#define SW2 GPIO_IDR_2
+#define SW3 GPIO_IDR_3
 
 /* USER CODE END PV */
 
